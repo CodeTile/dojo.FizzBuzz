@@ -45,8 +45,8 @@ namespace dojo.FizzBuzz
         private void DefaultRules()
         {
             Rules.Add(new FizzBuzzRule35());
-            Rules.Add(new FizzBuzzRule3());
-            Rules.Add(new FizzBuzzRule5());
+            Rules.Add(new FizzBuzzRule("Fizz", 3));
+            Rules.Add(new FizzBuzzRule("Buzz", 5));
         }
     }
 }
