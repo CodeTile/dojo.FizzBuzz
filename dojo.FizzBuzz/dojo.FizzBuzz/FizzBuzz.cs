@@ -1,13 +1,36 @@
-﻿namespace dojo.FizzBuzz
+﻿using dojo.FizzBuzz.Rules;
+
+namespace dojo.FizzBuzz
 {
     public interface IFizzBuzz
     {
-        string Parse(int i);
+        void AddRule(IFizzBuzzRule rule);
+
+        void ClearRules();
+
+        string FizzOrBuzz(int i);
     }
 
     public class FizzBuzz : IFizzBuzz
     {
-        internal string Parse(int i)
+        public FizzBuzz()
+        {
+            DefaultRules();
+        }
+
+        internal List<IFizzBuzzRule> Rules { get; private set; } = [];
+
+        public void AddRule(IFizzBuzzRule rule)
+        {
+            Rules.Add(rule);
+        }
+
+        public void ClearRules()
+        {
+            Rules.Clear();
+        }
+
+        public string FizzOrBuzz(int i)
         {
             if (i % 3 == 0 && i % 5 == 0)
                 return "FizzBuzz";
@@ -17,6 +40,13 @@
                 return "Fizz";
             else
                 return i.ToString();
+        }
+
+        private void DefaultRules()
+        {
+            Rules.Add(new FizzBuzzRule35());
+            Rules.Add(new FizzBuzzRule3());
+            Rules.Add(new FizzBuzzRule5());
         }
     }
 }

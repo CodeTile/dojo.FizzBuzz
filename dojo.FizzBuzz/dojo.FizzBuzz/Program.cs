@@ -4,10 +4,10 @@
     {
         private static void Main()
         {
-            var fizzBuzz = new FizzBuzz();
+            IFizzBuzz fizzBuzz = new FizzBuzz();
             for (int i = 0; i < 100; i++)
             {
-                Console.WriteLine(fizzBuzz.Parse(i));
+                Console.WriteLine(fizzBuzz.FizzOrBuzz(i));
             }
         }
     }
