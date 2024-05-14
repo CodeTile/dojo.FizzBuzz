@@ -7,6 +7,9 @@ namespace dojo.FizzBuzz.Tests
     public class FizzBuzzRuleTests
     {
         [TestMethod]
+        [DataRow(-3, true, "Fizz")]
+        [DataRow(-1, false, "-1")]
+        [DataRow(0, false, "0")]
         [DataRow(1, false, "1")]
         [DataRow(2, false, "2")]
         [DataRow(3, true, "Fizz")]
@@ -30,6 +33,8 @@ namespace dojo.FizzBuzz.Tests
         }
 
         [TestMethod]
+        [DataRow(-15, true, "FizzBuzz")]
+        [DataRow(0, false, "0")]
         [DataRow(1, false, "1")]
         [DataRow(2, false, "2")]
         [DataRow(3, false, "3")]
@@ -80,6 +85,7 @@ namespace dojo.FizzBuzz.Tests
             uot.Result.Should().Be(resultExpected);
         }
 
+        [TestMethod]
         [DataRow(1, false, "1")]
         [DataRow(2, false, "2")]
         [DataRow(3, false, "3")]

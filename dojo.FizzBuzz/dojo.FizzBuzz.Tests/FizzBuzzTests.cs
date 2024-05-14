@@ -3,6 +3,7 @@ using FluentAssertions;
 
 namespace dojo.FizzBuzz.Tests
 {
+    [TestClass]
     public class FizzBuzzTests
     {
         [TestMethod]
