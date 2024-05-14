@@ -48,7 +48,7 @@ namespace dojo.FizzBuzz.Tests
         public void FizzBuzzRule35(int value, bool parsedExpected, string resultExpected)
         {
             // Arrange
-            var uot = new FizzBuzzRule35();
+            var uot = new FizzBuzzRule("FizzBuzz", 3, 5);
 
             // Act
             var parsed = uot.Parse(value);

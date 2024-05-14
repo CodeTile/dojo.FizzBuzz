@@ -32,19 +32,17 @@ namespace dojo.FizzBuzz
 
         public string FizzOrBuzz(int i)
         {
-            if (i % 3 == 0 && i % 5 == 0)
-                return "FizzBuzz";
-            else if (i % 5 == 0)
-                return "Buzz";
-            else if (i % 3 == 0)
-                return "Fizz";
-            else
-                return i.ToString();
+            foreach (IFizzBuzzRule rule in Rules.OrderByDescending(m => m.NumbersToDevideBy.Length))
+            {
+                if (rule.Parse(i))
+                    return rule.Result;
+            }
+            return i.ToString();
         }
 
         private void DefaultRules()
         {
-            Rules.Add(new FizzBuzzRule35());
+            Rules.Add(new FizzBuzzRule("FizzBuzz", 3, 5));
             Rules.Add(new FizzBuzzRule("Fizz", 3));
             Rules.Add(new FizzBuzzRule("Buzz", 5));
         }
