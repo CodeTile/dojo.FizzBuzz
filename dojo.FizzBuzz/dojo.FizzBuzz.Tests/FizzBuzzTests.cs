@@ -3,7 +3,7 @@ using FluentAssertions;
 
 namespace dojo.FizzBuzz.Tests
 {
-    internal class FizzBuzzTests
+    public class FizzBuzzTests
     {
         [TestMethod]
         [DataRow(0, false, "0")]
