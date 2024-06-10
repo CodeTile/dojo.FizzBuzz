@@ -46,5 +46,18 @@ namespace dojo.FizzBuzz
             Rules.Add(new FizzBuzzRule("Fizz", 3));
             Rules.Add(new FizzBuzzRule("Buzz", 5));
         }
+        /// <summary>
+        /// Factory method to check all numbers between minimum and maximum
+        /// </summary>
+        /// <param name="min">Starting number</param>
+        /// <param name="max">Last number to check</param>
+        public static void EnumerateRange(int min, int max)
+        {
+            var fizzBuzz = new FizzBuzz();
+            for (int i = min; i <= max; i++)
+            {
+                Console.WriteLine(fizzBuzz.FizzOrBuzz(i));
+            }
+        }
     }
 }
