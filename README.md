@@ -4,7 +4,7 @@ Recently I was asked to do this (again) but to ensure there was testing and the 
 This is my attempt, when not under the pressure of a tech test to find a solution.
 
 ##### Environment
-This solution is written for .net 8 with Visual Studio 2022.
+This solution is written for .net 8 withun Visual Studio 2022.
 Testing is done with MS-Test and FluentAssertions.
 
 ## The Simple Snippet
