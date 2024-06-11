@@ -6,6 +6,18 @@ namespace dojo.FizzBuzz.Tests
     internal class FizzBuzzTests
     {
         [TestMethod]
+        public void FizzBuzzInterfaceCheck()
+        {
+            // Arrange
+            var uot = new FizzBuzz();
+
+            // Act
+            IFizzBuzz actual = uot as IFizzBuzz;
+            // Assert
+            actual.Should().NotBeNull($"Does not implement interface {nameof(IFizzBuzz)}!");
+        }
+
+        [TestMethod]
         public void AddRuleTest1()
         {
             //arrange
