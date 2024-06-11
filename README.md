@@ -1,5 +1,5 @@
 # dojo.FizzBuzz
-Over the years applying for new roles, I have asked to create a FizzBuzz project.  
+Over the years applying for new roles, I have been asked to create a FizzBuzz project.  
 Recently I was asked to do this (again) but to ensure there was testing and the code adhered to SOLID principles.
 This is my attempt, when not under the pressure of a tech test to find a solution.
 
