@@ -111,5 +111,17 @@ namespace dojo.FizzBuzz.Tests
             parsed.Should().Be(parsedExpected);
             uot.Result.Should().Be(resultExpected);
         }
+
+        [TestMethod]
+        public void FizzBuzzRuleTypeCheck()
+        {
+            // Arrange
+            var uot = new FizzBuzzRule("Fizz", 3);
+
+            // Act
+            IFizzBuzzRule actual = uot as IFizzBuzzRule;
+            // Assert
+            actual.Should().NotBeNull($"Does not implement interface {nameof(IFizzBuzzRule)}!");
+        }
     }
 }

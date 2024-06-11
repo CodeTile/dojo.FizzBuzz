@@ -12,4 +12,7 @@
       <_Parameter1>dojo.FizzBuzz.Tests.nUnit</_Parameter1>
     </AssemblyAttribute>
   </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="dojo.FizzBuzz.Tests" />
+  </ItemGroup>
 </Project>

@@ -3,115 +3,136 @@ using FluentAssertions;
 
 namespace dojo.FizzBuzz.Tests
 {
-    [TestClass]
-    public class FizzBuzzTests
+    internal class FizzBuzzTests
     {
         [TestMethod]
-        [DataRow(0, false, "0")]
-        [DataRow(1, false, "1")]
-        [DataRow(2, false, "2")]
-        [DataRow(-3, true, "Fizz")]
-        [DataRow(3, true, "Fizz")]
-        [DataRow(4, false, "4")]
-        [DataRow(5, false, "5")]
-        [DataRow(6, true, "Fizz")]
-        [DataRow(7, false, "7")]
-        [DataRow(14, false, "14")]
-        [DataRow(15, true, "Fizz")]
-        [DataRow(16, false, "16")]
-        public void FizzBuzzRule3(int value, bool parsedExpected, string resultExpected)
+        public void AddRuleTest1()
         {
-            // Arrange
-            var uot = new FizzBuzzRule("Fizz", 3);
-
-            // Act
-            var parsed = uot.Parse(value);
-            // Assert
-            parsed.Should().Be(parsedExpected);
-            uot.Result.Should().Be(resultExpected);
+            //arrange
+            var uot = new FizzBuzz();
+            //act
+            uot.AddRule(new FizzBuzzRule("Fizz", 24));
+            //assert
+            uot.Rules.Count.Should().Be(4);
         }
 
         [TestMethod]
-        [DataRow(0, false, "0")]
-        [DataRow(1, false, "1")]
-        [DataRow(2, false, "2")]
-        [DataRow(3, false, "3")]
-        [DataRow(4, false, "4")]
-        [DataRow(5, false, "5")]
-        [DataRow(6, false, "6")]
-        [DataRow(7, false, "7")]
-        [DataRow(8, false, "8")]
-        [DataRow(13, false, "13")]
-        [DataRow(14, false, "14")]
-        [DataRow(-15, true, "FizzBuzz")]
-        [DataRow(15, true, "FizzBuzz")]
-        [DataRow(20, false, "20")]
-        [DataRow(21, false, "21")]
-        [DataRow(22, false, "22")]
-        [DataRow(30, true, "FizzBuzz")]
-        [DataRow(-30, true, "FizzBuzz")]
-        public void FizzBuzzRule35(int value, bool parsedExpected, string resultExpected)
+        public void AddRuleTest2()
         {
-            // Arrange
-            var uot = new FizzBuzzRule("FizzBuzz", 3, 5);
+            //arrange
+            var uot = new FizzBuzz();
+            uot.ClearRules();
+            //act
+            uot.AddRule(new FizzBuzzRule("Moon", 24));
+            //assert
+            uot.Rules.Count.Should().Be(1);
+            ((FizzBuzzRule)uot.Rules[0]).NumbersToDevideBy.Length.Should().Be(1);
+            ((FizzBuzzRule)uot.Rules[0]).NumbersToDevideBy[0].Should().Be(24);
+            ((FizzBuzzRule)uot.Rules[0]).FizzedWord.Should().Be("Moon");
+        }
 
-            // Act
-            var parsed = uot.Parse(value);
-            // Assert
-            parsed.Should().Be(parsedExpected);
-            uot.Result.Should().Be(resultExpected);
+
+        [TestMethod]
+        public void ClearRulesTest1()
+        {
+            //arrange
+            var uot = new FizzBuzz();
+            //act
+            uot.ClearRules();
+            //assert
+            uot.Rules.Count.Should().Be(0);
         }
 
         [TestMethod]
-        [DataRow(0, false, "0")]
-        [DataRow(1, false, "1")]
-        [DataRow(2, false, "2")]
-        [DataRow(3, false, "3")]
-        [DataRow(4, false, "4")]
-        [DataRow(5, true, "Buzz")]
-        [DataRow(6, false, "6")]
-        [DataRow(7, false, "7")]
-        [DataRow(14, false, "14")]
-        [DataRow(15, true, "Buzz")]
-        [DataRow(16, false, "16")]
-        public void FizzBuzzRule5(int value, bool parsedExpected, string resultExpected)
+        public void ClearRulesTest2()
         {
-            // Arrange
-            var uot = new FizzBuzzRule("Buzz", 5);
-
-            // Act
-            var parsed = uot.Parse(value);
-            // Assert
-            parsed.Should().Be(parsedExpected);
-            uot.Result.Should().Be(resultExpected);
+            //arrange
+            var uot = new FizzBuzz();
+            uot.AddRule(new FizzBuzzRule("Ping", 123));
+            //act
+            uot.ClearRules();
+            //assert
+            uot.Rules.Count.Should().Be(0);
         }
 
         [TestMethod]
-        [DataRow(0, false, "0")]
-        [DataRow(1, false, "1")]
-        [DataRow(2, false, "2")]
-        [DataRow(3, false, "3")]
-        [DataRow(4, false, "4")]
-        [DataRow(5, false, "5")]
-        [DataRow(6, false, "6")]
-        [DataRow(7, true, "Ping Pong")]
-        [DataRow(8, false, "8")]
-        [DataRow(13, false, "13")]
-        [DataRow(14, true, "Ping Pong")]
-        [DataRow(15, false, "15")]
-        [DataRow(20, false, "20")]
-        [DataRow(21, true, "Ping Pong")]
-        [DataRow(22, false, "22")]
-        public void FizzBuzzRule7(int value, bool parsedExpected, string resultExpected)
+        public void ConstructorTest()
         {
-            // Arrange
-            var uot = new FizzBuzzRule("Ping Pong", 7);
+            //arrange
+            var uot = new FizzBuzz();
+            //act
 
-            // Act
-            var parsed = uot.Parse(value);
-            // Assert
-            parsed.Should().Be(parsedExpected);
-            uot.Result.Should().Be(resultExpected);
+            //assert
+            uot.Rules.Count.Should().Be(3);
+        }
+
+        [TestMethod]
+        [DataRow(1, "1")]
+        [DataRow(2, "2")]
+        [DataRow(3, "Fizz")]
+        [DataRow(4, "4")]
+        [DataRow(5, "Buzz")]
+        [DataRow(6, "Fizz")]
+        [DataRow(7, "7")]
+        [DataRow(8, "8")]
+        [DataRow(9, "Fizz")]
+        [DataRow(10, "Buzz")]
+        [DataRow(11, "11")]
+        [DataRow(12, "Fizz")]
+        [DataRow(13, "13")]
+        [DataRow(14, "14")]
+        [DataRow(15, "FizzBuzz")]
+        [DataRow(16, "16")]
+        [DataRow(17, "17")]
+        [DataRow(18, "Fizz")]
+        [DataRow(19, "19")]
+        [DataRow(20, "Buzz")]
+        [DataRow(21, "Fizz")]
+        [DataRow(22, "22")]
+        public void FizzOrBuzz1(int numberToTest, string expected)
+        {
+            //arrange
+            var uot = new FizzBuzz();
+            //act
+            var actual = uot.FizzOrBuzz(numberToTest);
+            //assert
+            uot.Rules.Count.Should().Be(3);
+            actual.Should().Be(expected);
+        }
+
+        [TestMethod]
+        [DataRow(1, "1")]
+        [DataRow(2, "2")]
+        [DataRow(3, "Fizz")]
+        [DataRow(4, "4")]
+        [DataRow(5, "Buzz")]
+        [DataRow(6, "Fizz")]
+        [DataRow(7, "Ping Pong")]
+        [DataRow(8, "8")]
+        [DataRow(9, "Fizz")]
+        [DataRow(10, "Buzz")]
+        [DataRow(11, "11")]
+        [DataRow(12, "Fizz")]
+        [DataRow(13, "13")]
+        [DataRow(14, "Ping Pong")]
+        [DataRow(15, "FizzBuzz")]
+        [DataRow(16, "16")]
+        [DataRow(17, "17")]
+        [DataRow(18, "Fizz")]
+        [DataRow(19, "19")]
+        [DataRow(20, "Buzz")]
+        [DataRow(21, "Fizz")]
+        [DataRow(22, "22")]
+        public void FizzOrBuzz2(int numberToTest, string expected)
+        {
+            //arrange
+            var uot = new FizzBuzz();
+            uot.AddRule(new FizzBuzzRule("Ping Pong", 7));
+            //act
+            var actual = uot.FizzOrBuzz(numberToTest);
+            //assert
+            uot.Rules.Count.Should().Be(4);
+            actual.Should().Be(expected);
         }
     }
 }
