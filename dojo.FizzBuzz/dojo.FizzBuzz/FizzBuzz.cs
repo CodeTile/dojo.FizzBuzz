@@ -8,17 +8,23 @@ namespace dojo.FizzBuzz
 
         void ClearRules();
 
+        void EnumerateRange(int min, int max);
+
         string FizzOrBuzz(int i);
     }
 
     public class FizzBuzz : IFizzBuzz
     {
-        public FizzBuzz()
-        {
-            DefaultRules();
-        }
-
         internal List<IFizzBuzzRule> Rules { get; private set; } = [];
+
+        public static IFizzBuzz BuildFizzBuzzWithDefaultRules()
+        {
+            var target = new FizzBuzz
+            {
+                Rules = new List<IFizzBuzzRule>() { new FizzBuzzRule("FizzBuzz", 10, 3, 5), new FizzBuzzRule("Buzz", 20, 5), new FizzBuzzRule("Buzz", 30, 5), }
+            };
+            return target;
+        }
 
         public void AddRule(IFizzBuzzRule rule)
         {
@@ -30,34 +36,30 @@ namespace dojo.FizzBuzz
             Rules.Clear();
         }
 
-        public string FizzOrBuzz(int i)
-        {
-            foreach (IFizzBuzzRule rule in Rules.OrderByDescending(m => m.NumbersToDevideBy.Length))
-            {
-                if (rule.Parse(i))
-                    return rule.Result;
-            }
-            return i.ToString();
-        }
-
-        private void DefaultRules()
-        {
-            Rules.Add(new FizzBuzzRule("FizzBuzz", 3, 5));
-            Rules.Add(new FizzBuzzRule("Fizz", 3));
-            Rules.Add(new FizzBuzzRule("Buzz", 5));
-        }
         /// <summary>
         /// Factory method to check all numbers between minimum and maximum
         /// </summary>
         /// <param name="min">Starting number</param>
         /// <param name="max">Last number to check</param>
-        public static void EnumerateRange(int min, int max)
+        public void EnumerateRange(int min, int max)
         {
-            var fizzBuzz = new FizzBuzz();
             for (int i = min; i <= max; i++)
             {
-                Console.WriteLine(fizzBuzz.FizzOrBuzz(i));
+                Console.WriteLine(FizzOrBuzz(i));
             }
+        }
+
+        public string FizzOrBuzz(int i)
+        {
+            foreach (var rule in from IFizzBuzzRule rule in Rules!.OrderBy(m => m.SortOrder)
+                                 where rule.Matches(i)
+                                 select rule)
+            {
+                if (rule != null)
+                    return rule.Result;
+            }
+
+            return i.ToString();
         }
     }
 }

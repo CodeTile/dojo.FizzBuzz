@@ -6,18 +6,6 @@ namespace dojo.FizzBuzz.Tests
     internal class FizzBuzzTests
     {
         [TestMethod]
-        public void FizzBuzzInterfaceCheck()
-        {
-            // Arrange
-            var uot = new FizzBuzz();
-
-            // Act
-            IFizzBuzz actual = uot as IFizzBuzz;
-            // Assert
-            actual.Should().NotBeNull($"Does not implement interface {nameof(IFizzBuzz)}!");
-        }
-
-        [TestMethod]
         public void AddRuleTest1()
         {
             //arrange
@@ -42,7 +30,6 @@ namespace dojo.FizzBuzz.Tests
             ((FizzBuzzRule)uot.Rules[0]).NumbersToDevideBy[0].Should().Be(24);
             ((FizzBuzzRule)uot.Rules[0]).FizzedWord.Should().Be("Moon");
         }
-
 
         [TestMethod]
         public void ClearRulesTest1()
@@ -76,6 +63,18 @@ namespace dojo.FizzBuzz.Tests
 
             //assert
             uot.Rules.Count.Should().Be(3);
+        }
+
+        [TestMethod]
+        public void FizzBuzzInterfaceCheck()
+        {
+            // Arrange
+            var uot = new FizzBuzz();
+
+            // Act
+            IFizzBuzz actual = uot as IFizzBuzz;
+            // Assert
+            actual.Should().NotBeNull($"Does not implement interface {nameof(IFizzBuzz)}!");
         }
 
         [TestMethod]

@@ -5,17 +5,21 @@
         int[] NumbersToDevideBy { get; }
         string Result { get; }
 
-        bool Parse(int i);
+        int SortOrder { get; set; }
+
+        bool Matches(int i);
     }
 
     public class FizzBuzzRule(string fizzedWord,
-                                     params int[] numbersToDevideBy) : IFizzBuzzRule
+                              int sortOrder,
+                              params int[] numbersToDevideBy) : IFizzBuzzRule
     {
         internal readonly string FizzedWord = fizzedWord;
         public int[] NumbersToDevideBy => numbersToDevideBy;
         public string Result { get; private set; } = string.Empty;
+        public int SortOrder { get; set; } = sortOrder;
 
-        public bool Parse(int i)
+        public bool Matches(int i)
         {
             if (i == 0)
             {

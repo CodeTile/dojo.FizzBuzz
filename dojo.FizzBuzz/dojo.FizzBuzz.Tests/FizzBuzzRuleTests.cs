@@ -23,10 +23,10 @@ namespace dojo.FizzBuzz.Tests
         public void FizzBuzzRule3(int value, bool parsedExpected, string resultExpected)
         {
             // Arrange
-            var uot = new FizzBuzzRule("Fizz", 3);
+            var uot = new FizzBuzzRule("Fizz", 1, 3);
 
             // Act
-            var parsed = uot.Parse(value);
+            var parsed = uot.Matches(value);
             // Assert
             parsed.Should().Be(parsedExpected);
             uot.Result.Should().Be(resultExpected);
@@ -53,10 +53,10 @@ namespace dojo.FizzBuzz.Tests
         public void FizzBuzzRule35(int value, bool parsedExpected, string resultExpected)
         {
             // Arrange
-            var uot = new FizzBuzzRule("FizzBuzz", 3, 5);
+            var uot = new FizzBuzzRule("FizzBuzz", 1, 3, 5);
 
             // Act
-            var parsed = uot.Parse(value);
+            var parsed = uot.Matches(value);
             // Assert
             parsed.Should().Be(parsedExpected);
             uot.Result.Should().Be(resultExpected);
@@ -76,10 +76,10 @@ namespace dojo.FizzBuzz.Tests
         public void FizzBuzzRule5(int value, bool parsedExpected, string resultExpected)
         {
             // Arrange
-            var uot = new FizzBuzzRule("Buzz", 5);
+            var uot = new FizzBuzzRule("Buzz", 1, 5);
 
             // Act
-            var parsed = uot.Parse(value);
+            var parsed = uot.Matches(value);
             // Assert
             parsed.Should().Be(parsedExpected);
             uot.Result.Should().Be(resultExpected);
@@ -103,10 +103,10 @@ namespace dojo.FizzBuzz.Tests
         public void FizzBuzzRule7(int value, bool parsedExpected, string resultExpected)
         {
             // Arrange
-            var uot = new FizzBuzzRule("Ping Pong", 7);
+            var uot = new FizzBuzzRule("Ping Pong", 1, 7);
 
             // Act
-            var parsed = uot.Parse(value);
+            var parsed = uot.Matches(value);
             // Assert
             parsed.Should().Be(parsedExpected);
             uot.Result.Should().Be(resultExpected);

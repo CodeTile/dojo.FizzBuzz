@@ -4,7 +4,8 @@
     {
         private static void Main()
         {
-            FizzBuzz.EnumerateRange(0, 100);
+            IFizzBuzz target = FizzBuzz.BuildFizzBuzzWithDefaultRules();
+            target.EnumerateRange(0, 100);
         }
     }
 }
