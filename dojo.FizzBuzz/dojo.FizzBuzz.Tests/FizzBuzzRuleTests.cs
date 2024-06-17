@@ -1,6 +1,7 @@
 namespace dojo.FizzBuzz.Tests
 {
     using dojo.FizzBuzz.Rules;
+
     using FluentAssertions;
 
     [TestClass]

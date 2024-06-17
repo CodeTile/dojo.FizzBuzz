@@ -1,8 +1,9 @@
-﻿using dojo.FizzBuzz.Rules;
-using FluentAssertions;
-
-namespace dojo.FizzBuzz.Tests
+﻿namespace dojo.FizzBuzz.Tests
 {
+    using dojo.FizzBuzz.Rules;
+
+    using FluentAssertions;
+
     internal class FizzBuzzTests
     {
         [TestMethod]

@@ -1,7 +1,7 @@
-﻿using dojo.FizzBuzz.Rules;
-
-namespace dojo.FizzBuzz
+﻿namespace dojo.FizzBuzz
 {
+    using dojo.FizzBuzz.Rules;
+
     public interface IFizzBuzz
     {
         void AddRule(IFizzBuzzRule rule);
@@ -37,7 +37,7 @@ namespace dojo.FizzBuzz
         }
 
         /// <summary>
-        /// Factory method to check all numbers between minimum and maximum
+        /// Check all numbers between minimum and maximum
         /// </summary>
         /// <param name="min">Starting number</param>
         /// <param name="max">Last number to check</param>
